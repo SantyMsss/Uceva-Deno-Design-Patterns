@@ -39,3 +39,23 @@ deno --watch builder.task.ts
 * [Java Design Patterns](https://github.com/iluwatar/java-design-patterns)
 
 * [Design Patterns TypeScript](https://github.com/torokmark/design_patterns_in_typescript?tab=readme-ov-file)
+
+# Listado de Patrones Recomendados para el Curso
+
+## Creacionales
+- Builder
+- Abstract Factory
+- Factory Function
+- Singleton
+
+## Estructurales
+- Adapter
+- Composite
+- Facade
+- Flyweight
+
+## Comportamiento
+- Chain Responsability
+- Observer
+- Strategy
+- Template Method
