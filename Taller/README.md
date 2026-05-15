@@ -19,6 +19,9 @@
 | 5 | Singleton | Creacional | `05-singleton.ts` |
 | 6 | Factory Function | Creacional | `06-factory-function.ts` |
 | 7 | Facade | Estructural | `07-facade.ts` |
+| 8 | Strategy | Comportamiento | `08-strategy.ts` |
+| 9 | Command | Comportamiento | `09-command.ts` |
+| 10 | State | Comportamiento | `10-state.ts` |
 
 ---
 
@@ -125,6 +128,51 @@ deno Taller/06-factory-function.ts
 **Cómo ejecutar:**
 ```bash
 deno Taller/07-facade.ts
+```
+
+---
+
+### 8. Strategy — Cálculo de Costo de Envío
+
+**Archivo:** `08-strategy.ts`
+
+**Problema:** Una tienda en línea necesita calcular el costo de envío usando distintas empresas de mensajería, cada una con su propia fórmula de precio. Poner todos los cálculos en la clase `Pedido` con condicionales la vuelve difícil de mantener y viola el principio Abierto/Cerrado.
+
+**Solución con Strategy:** Cada algoritmo de cálculo se encapsula en su propia clase (`EnvioEstandar`, `EnvioEconomico`, `EnvioPremium`) que implementa la interfaz `EstrategiaEnvio`. La clase `Pedido` solo conoce esa interfaz y delega el cálculo en la estrategia asignada. Cambiar de mensajería en tiempo de ejecución es tan simple como asignar una estrategia diferente.
+
+**Cómo ejecutar:**
+```bash
+deno Taller/08-strategy.ts
+```
+
+---
+
+### 9. Command — Editor de Texto con Deshacer/Rehacer
+
+**Archivo:** `09-command.ts`
+
+**Problema:** Un editor de texto necesita que el usuario pueda deshacer (Ctrl+Z) y rehacer (Ctrl+Y) cualquier acción. Implementar esto directamente en los botones o atajos de teclado llena el editor de condicionales complejos y dificulta agregar nuevas acciones sin romper el historial.
+
+**Solución con Command:** Cada acción del editor (`ComandoEscribir`, `ComandoBorrar`) se encapsula en su propia clase con métodos `ejecutar()` y `deshacer()`. El `HistorialComandos` actúa como invocador: guarda los comandos en una pila y los revierte en orden inverso. Agregar una nueva acción solo requiere crear una nueva clase de comando.
+
+**Cómo ejecutar:**
+```bash
+deno Taller/09-command.ts
+```
+
+---
+
+### 10. State — Semáforo de Tráfico
+
+**Archivo:** `10-state.ts`
+
+**Problema:** Un semáforo tiene tres estados (Rojo, Amarillo, Verde) con comportamientos distintos en cada uno. Manejar esto con condicionales dentro de una sola clase hace el código frágil: agregar un nuevo estado obliga a modificar múltiples bloques if en la clase principal.
+
+**Solución con State:** Cada estado (`EstadoRojo`, `EstadoVerde`, `EstadoAmarillo`) se encapsula en su propia clase que implementa la interfaz `EstadoSemaforo`. El contexto `Semaforo` solo mantiene una referencia al estado actual y delega en él. Cada estado decide cuál es el siguiente estado y realiza la transición llamando a `semaforo.cambiarEstado()`.
+
+**Cómo ejecutar:**
+```bash
+deno Taller/10-state.ts
 ```
 
 ---
